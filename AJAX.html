@@ -1,0 +1,27 @@
+<html>
+<head>
+    <Title> AJAX </title>
+</head>
+<body>
+    <div style="display: flex; flex-direction: column; text-align: center; font-size: 30px;">
+        <h1> Введыть число </h1><br>
+        <input type="text" id="def" value="3"><br>
+        <button type="button" onclick="MathPow()">Вирахувати квадрат</button>
+        <h1 style="font-size: 15px;" id="ger">Квадрат числа</h1>
+    </div>
+    <script>
+        function MathPow() {
+            var hip = document.getElementById("def");
+            xhr = new XMLHttpRequest();
+            xhr.onreadystatechange/*onload*/ = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("ger").textContent = xhr.responseText;
+                }
+            }
+            xhr.open("GET", "ajax.php?a=" + hip, true);
+            xhr.send();
+        }
+    </script>
+</body>
+
+</html>
